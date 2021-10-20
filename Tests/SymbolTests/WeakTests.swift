@@ -2,6 +2,7 @@
 import XCTest
 
 final class WeakTests: XCTestCase {
+
   func test_dealloc_if_no_strong_reference() {
     let sut = Weak(SomeObject(42))
 
@@ -28,13 +29,6 @@ final class WeakTests: XCTestCase {
 
   // MARK: - Hashable
 
-  func test_hash_value() {
-    let object = SomeObject(42)
-    let sut = Weak(object)
-
-    XCTAssertEqual(sut.hashValue, Optional(42).hashValue)
-  }
-
   func test_hash_into() {
     var sut = Hasher()
     let object = SomeObject(42)
@@ -46,4 +40,5 @@ final class WeakTests: XCTestCase {
 
     XCTAssertEqual(sut.finalize(), ref.finalize())
   }
+
 }

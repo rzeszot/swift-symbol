@@ -1,0 +1,31 @@
+name: Swift
+
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
+
+jobs:
+  linter:
+    name: Linter
+    runs-on: macos-latest
+    timeout-minutes: 1
+    steps:
+    - name: Checkout
+      uses: actions/checkout@v2
+    - name: Linter
+      run: |
+        swiftlint lint --reporter github-actions-logging
+  tests:
+    name: Unit tests
+    needs: linter
+    runs-on: macos-latest
+    timeout-minutes: 3
+    steps:
+    - name: Checkout
+      uses: actions/checkout@v2
+    - name: Build
+      run: swift build -v
+    - name: Test
+      run: swift test -v

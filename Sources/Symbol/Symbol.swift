@@ -24,7 +24,6 @@ extension String {
   }
 }
 
-
 extension Symbol: Codable {
   public init(from decoder: Decoder) throws {
     let container = try decoder.singleValueContainer()

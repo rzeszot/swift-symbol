@@ -7,8 +7,11 @@ let package = Package(
   products: [
     .library(name: "Symbol", targets: ["Symbol"])
   ],
+  dependencies: [
+    .package(name: "Weak", url: "https://github.com/rzeszot/swift-weak", .exact("1.0.0"))
+  ],
   targets: [
-    .target(name: "Symbol"),
+    .target(name: "Symbol", dependencies: ["Weak"]),
     .testTarget(name: "SymbolTests", dependencies: ["Symbol"])
   ]
 )

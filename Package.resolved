@@ -1,0 +1,16 @@
+{
+  "object": {
+    "pins": [
+      {
+        "package": "Weak",
+        "repositoryURL": "https://github.com/rzeszot/swift-weak",
+        "state": {
+          "branch": null,
+          "revision": "42094045809dc44708c224d1956cd2bc5c58b858",
+          "version": "1.0.0"
+        }
+      }
+    ]
+  },
+  "version": 1
+}

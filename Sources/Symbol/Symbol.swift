@@ -3,12 +3,26 @@ import Foundation
 public struct Symbol {
   fileprivate let reference: Reference
 
+  init(_ reference: Reference) {
+    self.reference = reference
+  }
+
   init(_ string: String, registry: Registry) {
-    reference = registry.reference(for: string)
+    self.init(registry.reference(for: string))
   }
 
   public init(_ string: String) {
     self.init(string, registry: .shared)
+  }
+}
+
+extension Symbol {
+  static func all(registry: Registry) -> [Symbol] {
+    registry.all.map { Symbol($0) }
+  }
+
+  public static func all() -> [Symbol] {
+    all(registry: .shared)
   }
 }
 

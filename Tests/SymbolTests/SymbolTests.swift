@@ -107,4 +107,24 @@ final class SymbolTests: XCTestCase {
     XCTAssertEqual(symbol.description, ":hello_description")
   }
 
+  // MARK: -
+
+  func test_all() {
+    let symbols = [
+      Symbol("hello_all_1", registry: registry),
+      Symbol("hello_all_2", registry: registry),
+      Symbol("hello_all_3", registry: registry),
+      Symbol("hello_all_4", registry: registry)
+    ]
+    _ = symbols
+
+    let sut = Symbol.all(registry: registry).sorted(by: { $0.description < $1.description })
+
+    XCTAssertEqual(sut.count, 4)
+    XCTAssertEqual(String(sut[0]), "hello_all_1")
+    XCTAssertEqual(String(sut[1]), "hello_all_2")
+    XCTAssertEqual(String(sut[2]), "hello_all_3")
+    XCTAssertEqual(String(sut[3]), "hello_all_4")
+  }
+
 }

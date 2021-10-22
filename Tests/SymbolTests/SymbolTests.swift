@@ -8,14 +8,12 @@ final class SymbolTests: XCTestCase {
   var registry: Registry!
 
   override func setUp() {
-    super.setUp()
     registry = .init()
   }
 
   override func tearDown() {
     XCTAssertEqual(registry.count, 0)
     XCTAssertEqual(Registry.shared.count, 0)
-    super.tearDown()
   }
 
   // MARK: - Init
